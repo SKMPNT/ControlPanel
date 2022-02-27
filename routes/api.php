@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+//Public routes:
+Route::get('/', function (Request $request) {
+    return response()->json(['version' => '0']);
 });
+
+//Sanctum Auth routes. internal and interaction with dashboard features directly.
+Route::middleware('auth:sanctum')->group(function () {
+    //
+});
+
+//Token auth for external programs to connect to the dashboard.
